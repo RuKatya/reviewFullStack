@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "product-alerts.component.scss"
+    ],
+    "names": [],
+    "file": "product-alerts.component.css"
+}

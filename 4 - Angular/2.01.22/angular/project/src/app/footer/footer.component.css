@@ -1,0 +1,53 @@
+.icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+  margin: 0;
+  background-color: lightgray;
+  padding: 2% 0%;
+  position: fixed;
+  bottom: 0;
+}
+
+.icons li {
+  list-style: none;
+}
+
+.fa-facebook-square {
+  color: #0202b8;
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+.fa-whatsapp {
+  color: #01b101;
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+.fa-instagram {
+  color: #ac057c;
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+.fa-twitter {
+  color: #027eaf;
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+.fa-linkedin-in {
+  color: white;
+  background-color: #1c56d4;
+  height: 1.2rem;
+  width: 1.2rem;
+}
+/*# sourceMappingURL=footer.component.css.map */

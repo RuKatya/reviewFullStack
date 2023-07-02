@@ -1,0 +1,38 @@
+.bat-mitzva-pic {
+  width: 30%;
+  margin-top: 5%;
+  margin-left: 1%;
+}
+
+.text {
+  position: absolute;
+  bottom: 8em;
+  left: 1.5em;
+  font-size: 1.2em;
+  color: white;
+}
+
+.parent .hide {
+  visibility: hidden;
+}
+
+.hide {
+  position: absolute;
+  bottom: 7em;
+  left: 1.5em;
+  font-size: 1.2em;
+  color: white;
+}
+
+.parent:hover .hide {
+  visibility: visible;
+}
+
+.click {
+  background-color: black;
+  color: white;
+  padding: 1.2%;
+  margin-left: 1%;
+  font-size: 1.2em;
+}
+/*# sourceMappingURL=main.component.css.map */

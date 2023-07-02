@@ -1,0 +1,31 @@
+.navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  background-color: lightgray;
+  margin: 0;
+  padding: 1% 0;
+}
+
+.navbar li {
+  list-style-type: none;
+  margin: 0 2%;
+  font-size: 1.4em;
+}
+
+.navbar li a {
+  color: #025a56;
+  text-decoration: none;
+}
+
+.navbar li::before {
+  content: '-';
+}
+/*# sourceMappingURL=nav-bar.component.css.map */

@@ -1,0 +1,46 @@
+@import '../../nav';
+
+.icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0;
+    background-color: $navFooterBackgground;
+    padding: 2% 0%;
+    position: fixed;
+    bottom: 0;
+
+    li {
+        list-style: none;
+    }
+}
+
+.fa-facebook-square {
+    color: rgb(2, 2, 184);
+    @include icon;
+    
+}
+
+.fa-whatsapp {
+    color: rgb(1, 177, 1);
+    @include icon;
+}
+
+.fa-instagram {
+    // color: rgb(rgb(172, 5, 124), rgb(61, 3, 155), rgb(253, 240, 60));
+    color: rgb(172, 5, 124);
+    @include icon;
+}
+
+.fa-twitter {
+    color: rgb(2, 126, 175);
+    @include icon;
+}
+
+.fa-linkedin-in {
+    color: white;
+    background-color: rgb(28, 86, 212);
+    @include icon;
+    //width: 100%;
+}

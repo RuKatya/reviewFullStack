@@ -1,0 +1,26 @@
+@import '../../nav';
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: $navFooterBackgground;
+    margin: 0;
+    padding: 1% 0;
+    
+
+    li {
+        list-style-type: none;
+        margin: 0 2%;
+        font-size: 1.4em;
+        
+        a {
+            color: rgb(2, 90, 86);
+            text-decoration: none;
+        }
+
+        &::before {
+            content: '-';
+        }
+    }
+}

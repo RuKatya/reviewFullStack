@@ -1,0 +1,14 @@
+//varables
+$navFooterBackgground: rgb(211, 211, 211);
+$fontSize: 1.2em;
+$textColor: rgb(255, 255, 255);
+$borderLine: 1px solid white;
+
+
+
+
+//mixin
+@mixin icon {
+    height: 1.2rem;
+    width: 1.2rem;
+}
