@@ -1,0 +1,13 @@
+.itemProduct {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgb(193, 191, 191);
+    margin: 2% 0%;
+    padding: 0% 1%;
+}
+.gridProducts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  
+    gap: 2%;
+}

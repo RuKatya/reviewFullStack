@@ -1,0 +1,26 @@
+//Modules
+@import "./var";
+// @use "./var";
+
+//Mixins
+@mixin theme($theme:DarkGray) {
+    background: $theme;
+    border: 1px solid black;
+    font-size: 2rem;
+  }
+
+.main { 
+background-color: $backgroudColor;
+    width: 80%;
+    margin: 0% auto;
+
+    &__header {
+        color: $color;
+    }
+
+    &__parag {
+        @include theme($theme:$backgroudColor);
+    }
+
+
+}

@@ -1,0 +1,8 @@
+:root {
+    /* font-size: 5rem; */
+    --colorP:blue;
+}
+
+.text {
+    color:var(--colorP);
+}

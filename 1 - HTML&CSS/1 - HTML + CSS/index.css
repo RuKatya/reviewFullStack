@@ -1,0 +1,30 @@
+.classSelector {
+    color: green;
+    width: 200px;
+    height: 200px;
+}
+
+#idSelector {
+    background-color: aquamarine;
+}
+
+input[name="hello"] {
+    width: 100%;
+    background-color: rgb(158, 158, 251);
+}
+
+.dogURL {
+    color:bisque;
+}
+
+.dogURL:visited {
+    color:rgb(213, 82, 49);
+}
+
+.dogURL:hover {
+    color:rgb(120, 66, 1);
+}
+
+.dogURL:active {
+    color:rgb(242, 0, 255);
+}

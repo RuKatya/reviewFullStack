@@ -1,0 +1,38 @@
+.app {
+
+  &__data{
+
+
+
+    &--info{
+        position: relative;
+        background-color: yellow;
+        width: 50%;
+
+        &:hover &Explanation {
+            display: block;
+        }
+
+        &Title {
+            position: absolute;
+            top:0;
+            color:white;
+        }
+
+        &Img {
+            width: 100%;
+        }
+
+        &Explanation {
+            display: none;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            color: white;
+            text-align: center;
+        }
+    }
+
+
+  }
+}

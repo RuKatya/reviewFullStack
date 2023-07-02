@@ -1,0 +1,15 @@
+.main {
+    color: red;
+
+    &__parag {
+        margin: 5%;
+
+        &Header {
+            color: blue;
+        }
+    }
+}
+
+// .main__parag {
+//     margin: 5%;
+// }

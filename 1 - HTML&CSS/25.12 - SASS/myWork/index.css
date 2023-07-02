@@ -1,0 +1,72 @@
+html {
+  font-size: 14px;
+}
+
+.title {
+  font-size: 2rem;
+  color: #3f2d3c;
+  margin-left: 43%;
+}
+
+.frequency {
+  margin-left: 39.5%;
+  font-size: 1.3rem;
+}
+
+.but {
+  background-color: #9861db;
+  height: 2rem;
+  width: 6rem;
+  border-radius: 30%;
+  margin: 0rem 0.5rem;
+}
+
+.allDiv {
+  font-size: 1.5rem;
+  color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.childOne {
+  border: 1px solid black;
+  border-radius: 0.6em;
+  text-align: center;
+  padding: 2%;
+}
+
+.childOne__background {
+  background-color: #9861db;
+  color: white;
+}
+
+.childOne__line {
+  font-size: 0.8em;
+}
+
+.childOne--sign__price {
+  font-size: 2.5em;
+}
+
+.childOne__GB, .childOne__user, .childOne__sendTo {
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+}
+
+.childOne__btnDiff {
+  background-color: #9861db;
+  color: white;
+}
+
+.childOne__sign {
+  padding-bottom: 20%;
+}
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,25 @@
+@import "./var";
+
+.haeder {
+    color: yellow;
+    font-size: 3rem;
+
+    &__p1 {
+        @include p;
+    }
+
+    &__p2 {
+        color: $сolor;
+        font-size: 1rem;
+        border: $bold;
+    }
+
+    &__p3 {
+        color: red;
+    }
+}
+
+img {
+    // size: 3rem;
+    border-radius: $raduis;
+}

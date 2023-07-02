@@ -1,0 +1,68 @@
+@import './var2';
+@import './var1';
+
+
+html {
+    font-size: 14px;
+}
+
+.title {
+    font-size: 2rem;
+    color: rgb(63, 45, 60);
+    margin-left: 43%;
+}
+
+.frequency {
+    margin-left: 39.5%;
+    font-size: 1.3rem;
+}
+
+.but {
+    background-color: rgb(152, 97, 219);
+    height: 2rem;
+    width: 6rem;
+    border-radius: 30%;
+    margin: 0rem 0.5rem;
+}
+
+.allDiv {
+    @include div($color:black);
+}
+
+.childOne {
+    border: 1px solid black;
+    border-radius: 0.6em;
+    text-align: center;
+    padding: 2%;
+    // height: 20vh;
+
+    &__background {
+        background-color: $color;
+        color: white;
+    }
+
+    &__line {
+        font-size: 0.8em;
+    }
+
+    &--sign__price {
+        font-size: $fontSize;
+        // padding-bottom: 20%;
+    }
+
+    &__GB,
+    &__user,
+    &__sendTo {
+        border-top: 1px solid grey;
+        border-bottom: 1px solid grey;
+    }
+
+    &__btnDiff {
+        background-color: $color;
+        color: white;
+    }
+
+    &__sign {
+        padding-bottom: 20%;
+    }
+}

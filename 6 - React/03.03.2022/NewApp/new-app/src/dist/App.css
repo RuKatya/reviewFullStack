@@ -1,0 +1,24 @@
+.app__data--info {
+  position: relative;
+  background-color: yellow;
+  width: 50%;
+}
+.app__data--info:hover .app__data--infoExplanation {
+  display: block;
+}
+.app__data--infoTitle {
+  position: absolute;
+  top: 0;
+  color: white;
+}
+.app__data--infoImg {
+  width: 100%;
+}
+.app__data--infoExplanation {
+  display: none;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  color: white;
+  text-align: center;
+}

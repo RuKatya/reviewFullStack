@@ -1,0 +1,83 @@
+.gridAnimation {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* justify-items: center; */
+    max-width: 1440px;
+    /* width: clamp(300px, 80% ,1440px); */
+    margin: 0% auto;
+    position: relative;
+}
+
+.gridAnimation p {
+    width: 100%;
+    text-align: center;
+    padding: 5% 0%;
+    font-size: clamp( 15px, 1.5vw ,40px);
+}
+
+.gridAnimation p:nth-child(1):hover {
+    background-color: rgb(254, 131, 254);
+    animation-duration: 4s;
+    position: relative;
+    animation: rightmove 3s ease-in-out 0.5s both;
+    /* animation-direction: normal, reverse; */
+}
+
+@keyframes rightmove {
+    0% {
+        left: 0px;
+    }
+    
+    25% {
+        left: 50px;
+    }
+    
+    50% {
+        left: 100px;
+    }
+    
+    75% {
+        left: 50px;
+    }
+    
+    100% {
+        left: 0px;
+    }
+}
+
+.gridAnimation p:nth-child(odd) {
+    background-color: rgb(252, 135, 135);
+}
+
+.gridAnimation p:nth-child(even) {
+    background-color: rgb(144, 144, 255);
+}
+
+@media screen and (max-width: 768px) {
+    .gridAnimation {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gridAnimation p:nth-child(odd) {
+        background-color: rgb(255, 201, 102);
+    }
+    
+    .gridAnimation p:nth-child(even) {
+        background-color: pink;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .gridAnimation {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .gridAnimation p:nth-child(odd) {
+        background-color: rgb(153, 254, 153);
+    }
+    
+    .gridAnimation p:nth-child(even) {
+        background-color: rgb(87, 87, 87);
+    }
+}
+

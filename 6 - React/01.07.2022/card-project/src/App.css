@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100;0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,100;1,9..144,200;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700;1,9..144,800;1,9..144,900&display=swap');
+
+:root {
+    --fontOne: 'Montserrat', sans-serif;
+    --fontTwo: 'Fraunces', serif;
+    --colorOne: hsl(228, 12%, 48%);
+    --colorTwo: hsl(158, 36%, 37%);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.indexPage{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(30, 38%, 92%);
+}
+
+.cardPage {
+    width: clamp(250px, 50%, 800px);
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    align-items: center;
+    border-radius: 0.5rem;
+}
+
+@media only screen and (max-width:750px){
+    .cardPage {
+        flex-direction: column;
+    }
+}
+
+.cardPage__context{
+    /*width: 30vw;*/
+    padding: 0% 5%;
+    /* background-color: rgb(83, 58, 6); */
+}
+
+.price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.new-price, .old-price {
+    padding: 0;
+}
+
+.new-price {
+    font-size: 1.5rem;
+    font-family: var(--fontTwo);
+    font-weight: 600;
+    color: var(--colorTwo);
+}
+
+.old-price {
+    text-decoration: line-through;
+    font-family: var(--fontOne);
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--colorOne);
+}
+
+.nameOfPerfume {
+    font-family: var(--fontTwo);
+    font-weight: 700;
+}
+
+.descriptionOfPerfume {
+    color: var(--colorOne);
+    font-family: var(--fontOne);
+    font-weight: 600;
+}
+
+.cartBtn {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: var(--colorTwo);
+    border: none;
+    border-radius: 0.3rem;
+    padding: 3% 0%;
+    color: white;
+}
+
+.icon {
+    width: 5%;
+
+}
+

@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.mainPage {
+    h1 {
+        text-align: center;
+    }
+
+    header {
+        position: fixed;
+        top: 0;
+        background-color: aqua;
+        z-index: 10;
+        width: 100%;
+    }
+}
+
+.questionsPart {
+    width: 80%;
+    margin: 0 auto;
+
+    &__quest {
+        font-size: 1.1rem;
+        height: 20vh;
+        background-color: aliceblue;
+        border-radius: 0.5rem;
+        padding: 0.2% 0.5%;
+        margin: 3% 0%;
+    }
+
+    &__answersBtn {
+        display: flex;
+        width: 80%;
+        margin: 0 auto;
+        justify-content: space-between;
+
+        & button {
+            font-size: 1.1rem;
+            border-radius: 0.5rem;
+            padding: 1% 2%;
+            border: none;
+            background-color: rgb(225, 225, 225);
+            width: 50%;
+            margin: 0% 1%;
+        }
+    }
+
+    &__rightAnswer {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 1% auto;
+        border-radius: 0.5rem;
+        width: 40%;
+        font-size: 1.2rem;
+
+        p {
+            padding: 1% 0.5%;
+            margin: 0;
+        }
+
+        p:nth-child(2) {
+            color: rgb(70, 70, 251);
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+    }
+}
+
+.codeExample {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.myCode {
+    margin-top: 8%;
+    display: block;
+    padding: 3px 3px 2px;
+    font-size: 1rem;
+    line-height: 1.8rem;
+    background-color: rgb(230, 230, 230);
+    color: #000000;
+
+    &__li {
+        margin: 0% 5%;
+    }
+}
+
+.myCode:nth-child(3) {
+    width: 40%;
+}

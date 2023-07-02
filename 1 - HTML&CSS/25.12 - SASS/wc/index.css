@@ -1,0 +1,24 @@
+.haeder {
+  color: yellow;
+  font-size: 3rem;
+}
+
+.haeder__p1 {
+  color: green;
+  font-size: 2rem;
+}
+
+.haeder__p2 {
+  color: red;
+  font-size: 1rem;
+  border: 1px solid black;
+}
+
+.haeder__p3 {
+  color: red;
+}
+
+img {
+  border-radius: 100px;
+}
+/*# sourceMappingURL=index.css.map */

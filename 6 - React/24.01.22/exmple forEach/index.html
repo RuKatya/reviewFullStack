@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map VS ForEach</title>
+</head>
+
+<body>
+    <script>
+        let cost = [100, 400, 300, 700];
+
+        //FOREACH
+        let food = cost.forEach(i => { //מחזיר UNDEFINED
+            console.log(i)
+            return i / 2;
+        })
+
+        console.log(food)
+
+
+        console.log(`-------------------------------`)
+        //MAP
+        let walk = cost.map(i => { //מחזיר מערך חדש
+            console.log(i)
+            return i / 2;
+        })
+
+        console.log(walk)
+
+
+    </script>
+</body>
+
+</html>

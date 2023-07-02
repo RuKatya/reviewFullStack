@@ -1,0 +1,16 @@
+.main {
+  background-color: green;
+  width: 80%;
+  margin: 0% auto;
+}
+
+.main__header {
+  color: yellow;
+}
+
+.main__parag {
+  background: green;
+  border: 1px solid black;
+  font-size: 2rem;
+}
+/*# sourceMappingURL=index.css.map */

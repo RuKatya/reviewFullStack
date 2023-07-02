@@ -1,0 +1,35 @@
+/* BOX2 */
+.BOX2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 30%;
+    /* grid-gap: 5%;  */
+    row-gap: 10%;
+    column-gap: 2%;
+}
+
+.BOX2 div {
+    background-color: #2f8702;
+     padding: 20px;
+    /* margin: 2%; */
+    border-radius: 7px;
+}
+
+.boxA {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.boxB {
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
+
+.boxD {
+    grid-column-start: 2;
+    grid-column-end: 5;
+}
+
+.boxE {
+    grid-column-end: span 4;
+}
