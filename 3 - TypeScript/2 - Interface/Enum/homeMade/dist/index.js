@@ -29,6 +29,7 @@ var Gender;
     Gender["OTHER"] = "Other";
 })(Gender || (Gender = {}));
 // const userName = document.querySelector("#name")
+// console.log(userName)
 // const userAge = document.querySelector("#age")
 // const userCity = document.querySelector("#city")
 // const userGender = document.querySelector("#gender")
