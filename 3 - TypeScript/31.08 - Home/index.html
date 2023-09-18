@@ -11,6 +11,13 @@
         <button id="sortOld">Dowm</button>
         <button id="sortNew">Up</button>
         <input id="search" placeholder="Enter name of book" onkeyup="searchFun(event)">
+
+        <form onsubmit="getValueInput(event)">
+            <input type="text" name="nameOfBook" placeholder="Enter book name" onkeyup="checkInput(event)">
+            <input type="text" name="authorName" placeholder="Enter author name" onkeyup="checkInput(event)">
+            <input type="number" name="yearOfPublish" placeholder="Enter Year of publish" onkeyup="checkInput(event)">
+            <button type="submit">Add</button>
+        </form>
     <script src="./dist/index.js"></script>
 </body>
 </html>
