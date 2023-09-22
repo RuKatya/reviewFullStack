@@ -4,24 +4,45 @@ const sortDownBtn = document.querySelector('#sortOld') as HTMLButtonElement;
 const inputSearch = document.querySelector('#search')
 // 1. Create an array of books (year of publish, name of book, author) - add an interface
 
+function genUniqueId(): string {
+  const dateStr = Date
+    .now()
+    .toString(36); // convert num to base 36 and stringify
+
+  const randomStr = Math
+    .random()
+    .toString(36)
+    .substring(2, 8); // start at index 2 to skip decimal point
+
+  return `${dateStr}-${randomStr}`;
+}
+
+// console.log(genUniqueId())
+
+
 interface Book {
+  id: String;
   nameOfBook: String;
   author: String;
   yearOfPublish: Number;
 }
 
+
 const bookArray: Book[] = [
   {
+    id: genUniqueId(),
     nameOfBook: 'Life is a difficult time', // Hachaim Hem Tkufa Kasha
     author: 'Hanoch Daum',
     yearOfPublish: 2007,
   },
   {
+    id: genUniqueId(),
     nameOfBook: 'Eternal optimism', //Optimiot Nitchit
     author: 'Leni Ravitz',
     yearOfPublish: 2000,
   },
   {
+    id: genUniqueId(),
     nameOfBook: 'The Story Of Israeli Politics', //Sipora Shel Hapolitika Hisraelit
     author: 'Amit Segal',
     yearOfPublish: 2021,
@@ -41,6 +62,11 @@ const render = (bookArray) => {
     html += `
                 <div>
                     <h2>${book.nameOfBook}</h2>
+                    <h2>${book.id}</h2>
+                    <form onsubmit="updateName(event, '${book.id}')">
+                      <input type="text" name="newBookName"/>
+                      <button type="submit">Update</button>
+                    </form>
                 </div>
             `;
   });
@@ -49,6 +75,19 @@ const render = (bookArray) => {
 };
 
 render(bookArray);
+
+
+const updateName = (ev, id) => {
+  ev.preventDefault()
+
+  const book = bookArray.find(book => book.id==id)
+console.log(book)
+  book.nameOfBook = ev.target.elements.newBookName.value
+console.log(book)
+console.log(bookArray)
+return render(bookArray)
+}
+
 
 // 3. Create a button/two buttons that sort the list of book by the year
 // (oldest and newest)
@@ -108,7 +147,7 @@ const getValueInput = (ev) => {
   const matchYear = yearOfPublishVal.test(yearOfPublish)
 
   if (matchName && matchAuthor && matchYear) {
-      bookArray.push({nameOfBook, author: authorName, yearOfPublish})
+      bookArray.push({id: genUniqueId(), nameOfBook, author: authorName, yearOfPublish})
       return render(bookArray)
   } else {
     alert('Something is not correct')
@@ -152,3 +191,10 @@ const checkInput = (ev) =>{
 2.3. events, 
 2.4. queryselectors
 */
+
+
+
+
+
+
+// export default genUniqueId;

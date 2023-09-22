@@ -2,18 +2,32 @@ var rootEl = document.querySelector('#root');
 var sortUpBtn = document.querySelector('#sortNew');
 var sortDownBtn = document.querySelector('#sortOld');
 var inputSearch = document.querySelector('#search');
+// 1. Create an array of books (year of publish, name of book, author) - add an interface
+function genUniqueId() {
+    var dateStr = Date
+        .now()
+        .toString(36); // convert num to base 36 and stringify
+    var randomStr = Math
+        .random()
+        .toString(36)
+        .substring(2, 8); // start at index 2 to skip decimal point
+    return dateStr + "-" + randomStr;
+}
 var bookArray = [
     {
+        id: genUniqueId(),
         nameOfBook: 'Life is a difficult time',
         author: 'Hanoch Daum',
         yearOfPublish: 2007
     },
     {
+        id: genUniqueId(),
         nameOfBook: 'Eternal optimism',
         author: 'Leni Ravitz',
         yearOfPublish: 2000
     },
     {
+        id: genUniqueId(),
         nameOfBook: 'The Story Of Israeli Politics',
         author: 'Amit Segal',
         yearOfPublish: 2021
@@ -27,11 +41,20 @@ var bookArray = [
 var render = function (bookArray) {
     var html = '';
     bookArray.forEach(function (book) {
-        html += "\n                <div>\n                    <h2>" + book.nameOfBook + "</h2>\n                </div>\n            ";
+        html += "\n                <div>\n                    <h2>" + book.nameOfBook + "</h2>\n                    <h2>" + book.id + "</h2>\n                    <form onsubmit=\"updateName(event, '" + book.id + "')\">\n                      <input type=\"text\" name=\"newBookName\"/>\n                      <button type=\"submit\">Update</button>\n                    </form>\n                </div>\n            ";
     });
     return rootEl.innerHTML = html;
 };
 render(bookArray);
+var updateName = function (ev, id) {
+    ev.preventDefault();
+    var book = bookArray.find(function (book) { return book.id == id; });
+    console.log(book);
+    book.nameOfBook = ev.target.elements.newBookName.value;
+    console.log(book);
+    console.log(bookArray);
+    return render(bookArray);
+};
 // 3. Create a button/two buttons that sort the list of book by the year
 // (oldest and newest)
 var sortUp = function (bookArray) {
@@ -74,7 +97,7 @@ var getValueInput = function (ev) {
     var yearOfPublishVal = /[0-9]/;
     var matchYear = yearOfPublishVal.test(yearOfPublish);
     if (matchName && matchAuthor && matchYear) {
-        bookArray.push({ nameOfBook: nameOfBook, author: authorName, yearOfPublish: yearOfPublish });
+        bookArray.push({ id: genUniqueId(), nameOfBook: nameOfBook, author: authorName, yearOfPublish: yearOfPublish });
         return render(bookArray);
     }
     else {
@@ -118,4 +141,5 @@ var checkInput = function (ev) {
 2.2. objects,
 2.3. events,
 2.4. queryselectors
-*/ 
+*/
+// export default genUniqueId;
