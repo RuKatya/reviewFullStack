@@ -28,7 +28,7 @@ interface Book {
 }
 
 
-const bookArray: Book[] = [
+let bookArray: Book[] = [
   {
     id: genUniqueId(),
     nameOfBook: 'Life is a difficult time', // Hachaim Hem Tkufa Kasha
@@ -63,10 +63,12 @@ const render = (bookArray) => {
                 <div>
                     <h2>${book.nameOfBook}</h2>
                     <h2>${book.id}</h2>
-                    <form onsubmit="updateName(event, '${book.id}')">
+                    <button onclick="showUpdateBut()">SHOW UPDATE</button>
+                    <form id="updateForm" onsubmit="updateName(event, '${book.id}')">
                       <input type="text" name="newBookName"/>
                       <button type="submit">Update</button>
                     </form>
+                    <button onclick="deleteBook('${book.id}')">DELETE</button>
                 </div>
             `;
   });
@@ -81,11 +83,32 @@ const updateName = (ev, id) => {
   ev.preventDefault()
 
   const book = bookArray.find(book => book.id==id)
-console.log(book)
+  // console.log(book)
   book.nameOfBook = ev.target.elements.newBookName.value
-console.log(book)
-console.log(bookArray)
-return render(bookArray)
+  // console.log(book)
+  // console.log(bookArray)
+  return render(bookArray)
+}
+
+const deleteBook = (id) => {
+
+  bookArray = bookArray.filter(book => book.id !== id)
+  // console.log(bookArray)
+
+  return render(bookArray)
+
+}
+
+
+//do all the form in disaplay none
+//when push on the but just the one show in dom
+
+
+const showUpdateBut = () => {
+  const updateForm = document.querySelector('#updateForm') as HTMLFormElement
+  console.log(updateForm)
+  updateForm.style.display = "none"
+
 }
 
 

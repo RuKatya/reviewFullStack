@@ -41,7 +41,7 @@ var bookArray = [
 var render = function (bookArray) {
     var html = '';
     bookArray.forEach(function (book) {
-        html += "\n                <div>\n                    <h2>" + book.nameOfBook + "</h2>\n                    <h2>" + book.id + "</h2>\n                    <form onsubmit=\"updateName(event, '" + book.id + "')\">\n                      <input type=\"text\" name=\"newBookName\"/>\n                      <button type=\"submit\">Update</button>\n                    </form>\n                </div>\n            ";
+        html += "\n                <div>\n                    <h2>" + book.nameOfBook + "</h2>\n                    <h2>" + book.id + "</h2>\n                    <button onclick=\"showUpdateBut()\">SHOW UPDATE</button>\n                    <form id=\"updateForm\" onsubmit=\"updateName(event, '" + book.id + "')\">\n                      <input type=\"text\" name=\"newBookName\"/>\n                      <button type=\"submit\">Update</button>\n                    </form>\n                    <button onclick=\"deleteBook('" + book.id + "')\">DELETE</button>\n                </div>\n            ";
     });
     return rootEl.innerHTML = html;
 };
@@ -49,11 +49,23 @@ render(bookArray);
 var updateName = function (ev, id) {
     ev.preventDefault();
     var book = bookArray.find(function (book) { return book.id == id; });
-    console.log(book);
+    // console.log(book)
     book.nameOfBook = ev.target.elements.newBookName.value;
-    console.log(book);
-    console.log(bookArray);
+    // console.log(book)
+    // console.log(bookArray)
     return render(bookArray);
+};
+var deleteBook = function (id) {
+    bookArray = bookArray.filter(function (book) { return book.id !== id; });
+    // console.log(bookArray)
+    return render(bookArray);
+};
+//do all the form in disaplay none
+//when push on the but just the one show in dom
+var showUpdateBut = function () {
+    var updateForm = document.querySelector('#updateForm');
+    console.log(updateForm);
+    updateForm.style.display = "none";
 };
 // 3. Create a button/two buttons that sort the list of book by the year
 // (oldest and newest)
