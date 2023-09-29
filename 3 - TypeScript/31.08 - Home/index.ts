@@ -65,7 +65,7 @@ const render = (bookArray) => {
                     <h2>${book.id}</h2>
                     <button onclick="showUpdateBut()">SHOW UPDATE</button>
                     <form id="updateForm" onsubmit="updateName(event, '${book.id}')">
-                      <input type="text" name="newBookName"/>
+                      <input type="text" name="newBookName" style="display:none"/>
                       <button type="submit">Update</button>
                     </form>
                     <button onclick="deleteBook('${book.id}')">DELETE</button>
@@ -100,16 +100,40 @@ const deleteBook = (id) => {
 }
 
 
-//do all the form in disaplay none
+//do all the form in disaplay none (css) - Done
 //when push on the but just the one show in dom
 
 
-const showUpdateBut = () => {
-  const updateForm = document.querySelector('#updateForm') as HTMLFormElement
-  console.log(updateForm)
-  updateForm.style.display = "none"
+// 1. 
+// const showHideInput = () => {
+//   let inputUpdate = document.querySelector('#updateForm')
+//   // const inputUpdate = event.target.elements.newBookName.value
 
-}
+//   if (inputUpdate.value == 1) {
+    
+//   }
+// }
+
+// 2.
+// const showHideInput = () => {
+//   let inputUpdate = document.querySelector('#updateForm')
+
+//   if (inputUpdate.style.display === "none") {
+//     inputUpdate.style.display = "block";
+//   } else {
+//     inputUpdate.style.display = "none";
+//   }
+// }
+
+
+// ****
+// const showUpdateBut = () => {
+//   const updateForm = document.querySelector('#updateForm') as HTMLFormElement
+//   console.log(updateForm)
+//   updateForm.style.display = "none"
+
+// }
+// ****
 
 
 // 3. Create a button/two buttons that sort the list of book by the year
