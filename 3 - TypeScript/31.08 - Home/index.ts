@@ -1,7 +1,7 @@
-const rootEl = document.querySelector('#root');
+const rootEl = document.querySelector('#root') as HTMLDivElement;
 const sortUpBtn = document.querySelector('#sortNew') as HTMLButtonElement;
 const sortDownBtn = document.querySelector('#sortOld') as HTMLButtonElement;
-const inputSearch = document.querySelector('#search')
+const inputSearch = document.querySelector('#search') as HTMLInputElement;
 // 1. Create an array of books (year of publish, name of book, author) - add an interface
 
 function genUniqueId(): string {
@@ -26,6 +26,8 @@ interface Book {
   author: String;
   yearOfPublish: Number;
 }
+
+type Name = string | "text"
 
 
 let bookArray: Book[] = [
@@ -55,16 +57,16 @@ let bookArray: Book[] = [
 // num.forEach(function (value) {
 //     console.log(value);
 // });
-const render = (bookArray) => {
+const render = (bookArray: Array<Book>) => { // Book[]
   let html: string = '';
 
-  bookArray.forEach((book) => {
+  bookArray.forEach((book, index) => {
     html += `
                 <div>
                     <h2>${book.nameOfBook}</h2>
                     <h2>${book.id}</h2>
-                    <button onclick="showHideInput()">SHOW EDIT</button>
-                    <form id="updateForm" onsubmit="updateName(event, '${book.id}')" style="display:none">
+                    <button onclick="showHideInput(${index})">SHOW EDIT</button>
+                    <form id="updateForm-${index}" onsubmit="updateName(event, '${book.id}')" style="display:none">
                       <input type="text" name="newBookName"/>
                       <button type="submit">Update</button>
                     </form>
@@ -73,29 +75,34 @@ const render = (bookArray) => {
             `;
   });
 
-  return rootEl.innerHTML = html;
+  return rootEl.innerHTML = html; // find the type in typescript
 };
 
 render(bookArray);
 
 
-const updateName = (ev, id) => {
+const updateName = (ev: Event, id: string) => {
   ev.preventDefault()
 
   const book = bookArray.find(book => book.id==id)
   // console.log(book)
-  book.nameOfBook = ev.target.elements.newBookName.value
+  const target = ev.target as typeof ev.target & {
+    newBookName: {value: String} //, id:number, index: number, 
+    // yearOfPublich: { value: string}
+  }
+
+  book.nameOfBook = target.newBookName.value
   // console.log(book)
   // console.log(bookArray)
-  return render(bookArray)
+  return render(bookArray) // find the type in typescript
 }
 
-const deleteBook = (id) => {
+const deleteBook = (id: string) => {
 
   bookArray = bookArray.filter(book => book.id !== id)
   // console.log(bookArray)
 
-  return render(bookArray)
+  return render(bookArray) // find the type in typescript
 
 }
 
@@ -110,22 +117,9 @@ const deleteBook = (id) => {
 4. after the name is changed, the form is return to be display none
 */
 
-
-// 1. 
-// const showHideInput = (event) => {
-//   let inputUpdate = document.querySelector('#updateForm')
-//   // const inputUpdate = event.target.elements.newBookName.value //value = text in the inpur
-//   //value.length > 1
-
-//   we can not use the value of input, because it is still close (display none)
-//   // if (inputUpdate.value == 1) {
-    
-//   // }
-// }
-
 // 2.
-const showHideInput = () => {
-  let formEdit = document.querySelector('#updateForm') as HTMLFormElement
+const showHideInput = (bookIndex: number) => {
+  let formEdit = document.getElementById(`updateForm-${bookIndex}`) as HTMLFormElement
 
   if (formEdit.style.display === "none") {
     formEdit.style.display = "block";
@@ -135,27 +129,17 @@ const showHideInput = () => {
 }
 
 
-// ****
-// const showUpdateBut = () => {
-//   const updateForm = document.querySelector('#updateForm') as HTMLFormElement
-//   console.log(updateForm)
-//   updateForm.style.display = "none"
-
-// }
-// ****
-
-
 // 3. Create a button/two buttons that sort the list of book by the year
 // (oldest and newest)
 
-const sortUp = (bookArray) => {
-  const sortedUp = bookArray.sort((a, b) => b.yearOfPublish - a.yearOfPublish);
-  return render(sortedUp);
+const sortUp = (bookArray: Book[]) => {
+  const sortedUp = bookArray.sort((a, b) => b.yearOfPublish - a.yearOfPublish); // solve
+  return render(sortedUp); // שורה 100
 };
 
-const sortDown = (bookArray) => {
-  const sorted = bookArray.sort((a, b) => a.yearOfPublish - b.yearOfPublish);
-  return render(sorted);
+const sortDown = (bookArray: Book[]) => {
+  const sorted = bookArray.sort((a, b) => a.yearOfPublish - b.yearOfPublish);// solve
+  return render(sorted); // שורה 100
 };
 
 sortDownBtn.addEventListener('click', () => {
@@ -170,10 +154,14 @@ sortUpBtn.addEventListener("click",()=>{
 // 4. Create an input of search by author/name of book and show the result in the DOM
 // (choose which one of them to search to).
 
-const searchFun = (ev) => {
-    const inputValue = ev.target.value
+const searchFun = (ev: Event) => {
+    const target = ev.target as typeof ev.target & {
+      value: string
+    }
+
+    const inputValue = target.value
     const searchArray = bookArray.filter((book) => book.nameOfBook.includes(inputValue))
-    return render(searchArray)
+    return render(searchArray) // line 100
 }
 
 // create select next to the input that include aouthr name and book name
@@ -187,20 +175,31 @@ const searchFun = (ev) => {
 // להעיר את האינפוט בצבע אדום, במידה והטקסט נכון, האינפוט מתהפך לצבע ירוק.
 
 
-const getValueInput = (ev) => {
+const getValueInput = (ev: Event) => {
   ev.preventDefault()
 
-  const nameOfBook = ev.target.elements.nameOfBook.value
+  // const target = ev.target as typeof ev.target & {
+  //   newBookName: {value: String} //, id:number, index: number, 
+  //   // yearOfPublich: { value: string}
+  // }
+
+  const target = ev.target as typeof ev.target & {
+    nameOfBook: {value: string},
+    authorName: {value: string},
+    yearOfPublish: {value: number}
+  }
+
+  const nameOfBook = target.nameOfBook.value
   const nameVal: RegExp = /[a-zA-Z]/i
-  const matchName = nameVal.test(nameOfBook)
+  const matchName:  boolean = nameVal.test(nameOfBook)
 
-  const authorName = ev.target.elements.authorName.value
+  const authorName = target.authorName.value
   const authorNameVal: RegExp = /[a-zA-Z]/i
-  const matchAuthor = authorNameVal.test(authorName)
+  const matchAuthor:boolean = authorNameVal.test(authorName)
 
-  const yearOfPublish = ev.target.elements.yearOfPublish.value
+  const yearOfPublish = target.yearOfPublish.value
   const yearOfPublishVal: RegExp = /[0-9]/
-  const matchYear = yearOfPublishVal.test(yearOfPublish)
+  const matchYear:boolean = yearOfPublishVal.test(yearOfPublish.toString())
 
   if (matchName && matchAuthor && matchYear) {
       bookArray.push({id: genUniqueId(), nameOfBook, author: authorName, yearOfPublish})
@@ -211,11 +210,16 @@ const getValueInput = (ev) => {
 
 }
 
-const checkInput = (ev) =>{
+const checkInput = (ev: Event) =>{
   try {
+    const target = ev.target as typeof ev.target & {
+      type: string
+      value: string
+    }
+
     const input = ev.target
-    const typeOfInput = ev.target.type
-    const valueOfInput = ev.target.value
+    const typeOfInput = target.type
+    const valueOfInput = target.value
     const textVal: RegExp = /[a-zA-Z]/i
     const numVal: RegExp = /[0-9]/
 
@@ -229,7 +233,7 @@ const checkInput = (ev) =>{
     }
 
     if(check) {
-      return input.style.background = "green"
+      return input.style.background = "green" //find typescript of type style
     } else if (valueOfInput.length == 0) {
       return input.style.background = "none"
     } else {
@@ -239,18 +243,3 @@ const checkInput = (ev) =>{
     console.log(error)
   }
 }
-
-/* 
-2. Add types of ts to:
-2.1. function (what the function get in parameters and what it return), 
-2.2. objects, 
-2.3. events, 
-2.4. queryselectors
-*/
-
-
-
-
-
-
-// export default genUniqueId;
