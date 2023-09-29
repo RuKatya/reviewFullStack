@@ -41,7 +41,7 @@ var bookArray = [
 var render = function (bookArray) {
     var html = '';
     bookArray.forEach(function (book) {
-        html += "\n                <div>\n                    <h2>" + book.nameOfBook + "</h2>\n                    <h2>" + book.id + "</h2>\n                    <button onclick=\"showUpdateBut()\">SHOW UPDATE</button>\n                    <form id=\"updateForm\" onsubmit=\"updateName(event, '" + book.id + "')\">\n                      <input type=\"text\" name=\"newBookName\" style=\"display:none\"/>\n                      <button type=\"submit\">Update</button>\n                    </form>\n                    <button onclick=\"deleteBook('" + book.id + "')\">DELETE</button>\n                </div>\n            ";
+        html += "\n                <div>\n                    <h2>" + book.nameOfBook + "</h2>\n                    <h2>" + book.id + "</h2>\n                    <button onclick=\"showHideInput()\">SHOW EDIT</button>\n                    <form id=\"updateForm\" onsubmit=\"updateName(event, '" + book.id + "')\" style=\"display:none\">\n                      <input type=\"text\" name=\"newBookName\"/>\n                      <button type=\"submit\">Update</button>\n                    </form>\n                    <button onclick=\"deleteBook('" + book.id + "')\">DELETE</button>\n                </div>\n            ";
     });
     return rootEl.innerHTML = html;
 };
@@ -62,22 +62,31 @@ var deleteBook = function (id) {
 };
 //do all the form in disaplay none (css) - Done
 //when push on the but just the one show in dom
+/*
+1. when the page is loading the form is display none
+2. when we click on the btn "show edit", display of form change to display block
+3. enter the new value (name of book) in the input and press "update"
+4. after the name is changed, the form is return to be display none
+*/
 // 1. 
-// const showHideInput = () => {
+// const showHideInput = (event) => {
 //   let inputUpdate = document.querySelector('#updateForm')
-//   // const inputUpdate = event.target.elements.newBookName.value
-//   if (inputUpdate.value == 1) {
-//   }
+//   // const inputUpdate = event.target.elements.newBookName.value //value = text in the inpur
+//   //value.length > 1
+//   we can not use the value of input, because it is still close (display none)
+//   // if (inputUpdate.value == 1) {
+//   // }
 // }
 // 2.
-// const showHideInput = () => {
-//   let inputUpdate = document.querySelector('#updateForm')
-//   if (inputUpdate.style.display === "none") {
-//     inputUpdate.style.display = "block";
-//   } else {
-//     inputUpdate.style.display = "none";
-//   }
-// }
+var showHideInput = function () {
+    var formEdit = document.querySelector('#updateForm');
+    if (formEdit.style.display === "none") {
+        formEdit.style.display = "block";
+    }
+    else {
+        formEdit.style.display = "none";
+    }
+};
 // ****
 // const showUpdateBut = () => {
 //   const updateForm = document.querySelector('#updateForm') as HTMLFormElement

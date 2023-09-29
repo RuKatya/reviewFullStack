@@ -63,9 +63,9 @@ const render = (bookArray) => {
                 <div>
                     <h2>${book.nameOfBook}</h2>
                     <h2>${book.id}</h2>
-                    <button onclick="showUpdateBut()">SHOW UPDATE</button>
-                    <form id="updateForm" onsubmit="updateName(event, '${book.id}')">
-                      <input type="text" name="newBookName" style="display:none"/>
+                    <button onclick="showHideInput()">SHOW EDIT</button>
+                    <form id="updateForm" onsubmit="updateName(event, '${book.id}')" style="display:none">
+                      <input type="text" name="newBookName"/>
                       <button type="submit">Update</button>
                     </form>
                     <button onclick="deleteBook('${book.id}')">DELETE</button>
@@ -103,27 +103,36 @@ const deleteBook = (id) => {
 //do all the form in disaplay none (css) - Done
 //when push on the but just the one show in dom
 
+/*
+1. when the page is loading the form is display none
+2. when we click on the btn "show edit", display of form change to display block
+3. enter the new value (name of book) in the input and press "update"
+4. after the name is changed, the form is return to be display none
+*/
+
 
 // 1. 
-// const showHideInput = () => {
+// const showHideInput = (event) => {
 //   let inputUpdate = document.querySelector('#updateForm')
-//   // const inputUpdate = event.target.elements.newBookName.value
+//   // const inputUpdate = event.target.elements.newBookName.value //value = text in the inpur
+//   //value.length > 1
 
-//   if (inputUpdate.value == 1) {
+//   we can not use the value of input, because it is still close (display none)
+//   // if (inputUpdate.value == 1) {
     
-//   }
+//   // }
 // }
 
 // 2.
-// const showHideInput = () => {
-//   let inputUpdate = document.querySelector('#updateForm')
+const showHideInput = () => {
+  let formEdit = document.querySelector('#updateForm') as HTMLFormElement
 
-//   if (inputUpdate.style.display === "none") {
-//     inputUpdate.style.display = "block";
-//   } else {
-//     inputUpdate.style.display = "none";
-//   }
-// }
+  if (formEdit.style.display === "none") {
+    formEdit.style.display = "block";
+  } else {
+    formEdit.style.display = "none";
+  }
+}
 
 
 // ****
