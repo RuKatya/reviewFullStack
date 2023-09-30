@@ -25,6 +25,7 @@ function getUserDetails(event) {
     //over this one next lesson
     var emailVal = /([A-Z 0-9][ # & ' - _ ])[.]$/i;
     //input of email and validation
+    console.log(emailVal);
     var matchName = nameVal.test(userName);
     var matchHeight = heightVal.test(height);
     var matchCity = cityVal.test(city);

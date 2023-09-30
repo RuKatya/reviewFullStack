@@ -18,7 +18,7 @@ interface User {
 
 const arrayUser: User[] = []
 
-function getUserDetails (event) {
+function getUserDetails(event) {
     event.preventDefault()
 
     const userName = event.target.elements.userName.value
@@ -32,7 +32,7 @@ function getUserDetails (event) {
     const phoneNumber = event.target.elements.phoneNumber.value
     const email = event.target.elements.email.value
 
-    const nameVal:RegExp = /[A-Z]{4,12}/i
+    const nameVal: RegExp = /[A-Z]{4,12}/i
     const heightVal: RegExp = /[0-9]/
     const cityVal: RegExp = /[A-Z]/i
     const colorVal: RegExp = /^#?([0-9a-f]{6}|[0-9a-f]{3})$/i
@@ -41,6 +41,7 @@ function getUserDetails (event) {
     const emailVal: RegExp = /([A-Z 0-9][ # & ' - _ ])[.]$/i
     //input of email and validation
 
+    console.log(emailVal)
     const matchName = nameVal.test(userName)
     const matchHeight = heightVal.test(height)
     const matchCity = cityVal.test(city)
@@ -48,9 +49,9 @@ function getUserDetails (event) {
     const matchPhoneNumber = phoneNumberVal.test(phoneNumber)
     const matchEmail = emailVal.test(email)
 
-    if(matchName && matchHeight && matchCity && matchColor && matchPhoneNumber && matchEmail) {
-        arrayUser.push({user: userName, favoriteColor, height, city, color, phoneNumber, email}) 
-    
+    if (matchName && matchHeight && matchCity && matchColor && matchPhoneNumber && matchEmail) {
+        arrayUser.push({ user: userName, favoriteColor, height, city, color, phoneNumber, email })
+
         showInDom(arrayUser)
         event.target.reset()
     } else {
@@ -58,11 +59,11 @@ function getUserDetails (event) {
     }
 }
 
-function showInDom (userArr:User[]) {
+function showInDom(userArr: User[]) {
     const root = document.querySelector('#userDetails')
     let html = ''
 
-    userArr.forEach(user=> {
+    userArr.forEach(user => {
         html += `
             <div>
                 <h2>The user name: ${user.user}</h2>
