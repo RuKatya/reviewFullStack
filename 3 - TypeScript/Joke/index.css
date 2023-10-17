@@ -1,0 +1,17 @@
+/* root {
+    
+} */
+
+.text {
+    color: red;
+    font-size: 40px;
+    background-color: green;
+    border: black 1px;
+    border-radius: 2%;
+    width: 30%;
+}
+
+div {
+    background-color: yellow;
+    padding: 1%;
+}
