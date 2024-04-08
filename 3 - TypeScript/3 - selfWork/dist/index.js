@@ -23,9 +23,8 @@ function getUserDetails(event) {
     var colorVal = /^#?([0-9a-f]{6}|[0-9a-f]{3})$/i;
     var phoneNumberVal = /^+?(972)-(5)([0-9]{1})-([0-9]{3})-([0-9]{4})$/; //+972 - 5X - XXX - XXXX
     //over this one next lesson
-    var emailVal = /([A-Z 0-9][ # & ' - _ ])[.]$/i;
-    //input of email and validation
-    console.log(emailVal);
+    var emailVal = /([a-z 0-9][ - _ ])[@][a-z](\.\w{2,3})+$/;
+    //over this one next lesson
     var matchName = nameVal.test(userName);
     var matchHeight = heightVal.test(height);
     var matchCity = cityVal.test(city);
