@@ -1,17 +1,14 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
-import { useSelector } from 'react-redux';
-import { selectCount } from './redux/counter/counterSlice';
-import { useAppSelector } from './redux/hooks';
+import { selectCount } from "./app/counter/counterSlice";
+import { useAppSelector } from "./app/hooks";
 
 function App() {
-  // const count = useSelector(selectCount);
   const count = useAppSelector(selectCount)
-  //const [count, setCount] = useState(0)
-   console.log(count);
-  return <>Vite + Redux</>;
+  return <main>
+    <h2>Vite + Redux</h2>
+    <div>{count}</div>
+    <button>Add more</button>
+  </main>
 }
 
 export default App;
