@@ -5,7 +5,7 @@ interface ICount {
   value: number
 }
 
-const initialState : ICount = {
+const initialState: ICount = {
   value: 0
 }
 
@@ -14,10 +14,10 @@ export const counterSlice = createSlice({
   initialState,
   reducers: {
     increment: (state) => {
-       state.value += 1
+      state.value += 1
     },
     setValueZero: (state) => {
-        state.value = 0
+      state.value = 0
     },
     decrement: (state) => {
       state.value -= 1
@@ -28,7 +28,6 @@ export const counterSlice = createSlice({
   },
 })
 
-// Action creators are generated for each case reducer function
-export const { increment, setValueZero,decrement, incrementByAmount } = counterSlice.actions
+export const { increment, setValueZero, decrement, incrementByAmount } = counterSlice.actions
 export const selectCount = (state: RootState) => state.counter.value
 export default counterSlice.reducer
