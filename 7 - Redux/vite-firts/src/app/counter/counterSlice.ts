@@ -5,7 +5,7 @@ interface ICount {
   value: number
 }
 
-const initialState: ICount = {
+const initialState : ICount = {
   value: 0
 }
 
