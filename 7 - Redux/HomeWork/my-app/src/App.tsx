@@ -4,9 +4,12 @@ import { Counter } from "./features/counter/Counter"
 import logo from "./logo.svg"
 
 const App = () => {
+
   return (
     <div className="App">
-      <h2>את המשימה את עושה כאן</h2>
+      <h2>
+        את המשימה את עושה כאן
+        </h2>
     </div>
   )
 }
