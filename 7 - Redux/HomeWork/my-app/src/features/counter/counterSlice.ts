@@ -1,6 +1,7 @@
+// import { RootState } from './../../../../../vite-firts/src/redux/store';
 import type { PayloadAction } from "@reduxjs/toolkit"
 import { createAppSlice } from "../../app/createAppSlice"
-import type { AppThunk } from "../../app/store"
+import type { AppThunk, RootState } from "../../app/store"
 import { fetchCount } from "./counterAPI"
 
 export interface CounterSliceState {
@@ -16,29 +17,25 @@ const initialState: CounterSliceState = {
 export const counterSlice = createAppSlice({
   name: "counter",
   initialState,
-  reducers: create => ({
-    increment: create.reducer(state => {
-      state.value += 1
-    }),
-    decrement: create.reducer(state => {
-      state.value -= 1
-    }),
-    incrementByAmount: create.reducer(
-      (state, action: PayloadAction<number>) => {
-        state.value += action.payload
-      },
-    ),
-
-  }),
-
-  selectors: {
-    selectCount: counter => counter.value,
-    selectStatus: counter => counter.status,
+  reducers: {
+    increment: (state) => {
+      state.value += 1 // state.value = state.value + 1
+    },
+    decrement: (state) => {
+      state.value -= 1 // state.value = state.value - 1
+    },
+    incrementByAmount: (state, action: PayloadAction) => {
+      state.value *= action.payload // state.value = state.value * 1
+    },
+    decrementByAmount: (state, action: PayloadAction) => {
+      state.value /= action.payload // state.value = state.value / 1
+    },
+    setZero: (state) => {
+      state.value = 0 // state.value = 0
+    }
   },
 })
 
-export const { decrement, increment, incrementByAmount,
-} =
-  counterSlice.actions
-
-export const { selectCount, selectStatus } = counterSlice.selectors
+export const { increment, decrement, incrementByAmount, decrementByAmount, setZero } = counterSlice.actions
+export const selectorCaunter = (state: RootState) => state.counter.value
+export default counterSlice.reducer
