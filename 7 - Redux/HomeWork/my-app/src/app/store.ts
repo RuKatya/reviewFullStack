@@ -2,9 +2,10 @@ import type { Action, ThunkAction } from "@reduxjs/toolkit"
 import { combineSlices, configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/query"
 import { counterSlice } from "../features/counter/counterSlice"
+import {tasksSlice} from "../features/tasksArray/tasksSlice"
 import {textSlice} from "../features/textField/textSlice"
 
-const rootReducer = combineSlices(counterSlice, textSlice
+const rootReducer = combineSlices(counterSlice, textSlice, tasksSlice
   // , loginSlice
 
 )
