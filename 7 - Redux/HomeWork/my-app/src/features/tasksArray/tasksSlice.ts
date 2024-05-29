@@ -1,43 +1,47 @@
-import { tasksSlice } from './tasksSlice';
-import { createSlice } from '@reduxjs/toolkit';
+import { tasksSlice } from "./tasksSlice"
+import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
-import { RootState } from '../store';
-import { createAppSlice } from '../../app/createAppSlice';
-import { IUserTask } from '../../Component/ListOfTasks';
-import { v4 as uuidv4 } from 'uuid';
+import { RootState } from "../store"
+import { createAppSlice } from "../../app/createAppSlice"
+import { IUserTask } from "../../Component/ListOfTasks"
+import { v4 as uuidv4 } from "uuid"
 
-interface ITask extends IUserTask{ // listOfTasks
-    id: string
+export interface ITask extends IUserTask {
+  // listOfTasks
+  id: string
 }
 interface IArrayTasks {
-    value: Array<ITask>
+  value: Array<ITask>
 }
 
 const initialState: IArrayTasks = {
-    value: []
+  value: [{ id: uuidv4(), title: "sleep" }],
 }
 
 export const tasksSlice = createAppSlice({
-    name: 'tasks',
-    initialState,
-    reducers: {
-        addNewTask: (state, action: PayloadAction) => {
-            //console.log(action)
-            const {title, desc} = action.payload
-            state.value = [...state.value, {id: uuidv4(), title, desc}]
-        },
-        removeTask: (state, action: PayloadAction) => {
-            const taskId = action.payload;
-            state.tasksSlice = state.tasksSlice.filter((task) => 
-                task.id !== taskId
-            )
-
-            const {title, desc} = action.payload 
-            state.value = [...state.value, {id: uuidv4(), title, desc}]
-        }
-    }
+  name: "tasks",
+  initialState,
+  reducers: {
+    addNewTask: (state, action: PayloadAction) => {
+      //console.log(action)
+      const { title, desc } = action.payload
+      state.value = [...state.value, { id: uuidv4(), title, desc }]
+    },
+    removeTask: (state, action: PayloadAction) => {
+      console.log(action)
+      const taskId = action.payload
+      state.value = state.value.filter(task => task.id !== taskId)
+    },
+    editTask: (state, action: PayloadAction) => {
+      console.log(action.payload)
+     
+      state.value  = state.value.map(task => {
+        if (task.id === action.payload.id) return (task = action.payload)
+      })
+    },
+  },
 })
 
-export const {addNewTask, removeTask} = tasksSlice.actions
+export const { addNewTask, removeTask, editTask } = tasksSlice.actions
 export const selectTasks = (state: RootState) => state.tasks.value
 export default tasksSlice.reducer

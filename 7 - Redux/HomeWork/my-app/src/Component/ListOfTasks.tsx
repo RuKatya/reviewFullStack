@@ -1,7 +1,13 @@
 import React, { useState } from "react"
-import { taskCancelled } from "../../node_modules/@reduxjs/toolkit/dist/listenerMiddleware/exceptions"
+//import { taskCancelled } from "../../node_modules/@reduxjs/toolkit/dist/listenerMiddleware/exceptions"
 import { useAppDispatch, useAppSelector } from "../app/hooks"
-import { addNewTask, removeTask, selectTasks } from "../features/tasksArray/tasksSlice"
+import {
+  addNewTask,
+  editTask,
+  removeTask,
+  selectTasks,
+} from "../features/tasksArray/tasksSlice"
+import EditTask from "./EditTask"
 // import "../Style/ListOfTasks"
 
 export interface IUserTask {
@@ -12,6 +18,7 @@ const ListOfTasks = () => {
   const allTasks = useAppSelector(selectTasks)
   const dispatch = useAppDispatch()
   //console.log(allTasks)
+
 
   const [userTask, setUserTask] = useState<IUserTask>({ title: "", desc: "" })
 
@@ -29,6 +36,7 @@ const ListOfTasks = () => {
 
     dispatch(addNewTask(userTask))
   }
+
 
   return (
     <div>
@@ -50,22 +58,34 @@ const ListOfTasks = () => {
 
       <div>
         {/* if the desc exist show "details: ...." if not, do not show anything*/}
-        <div class="tasksList"
-        // style={{display: "flex", flexdirection: "row"}}
+        <div
+          className="tasksList"
+          // style={{display: "flex", flexdirection: "row"}}
         >
           {allTasks.map((task, i) => (
             <div key={i}>
               <p>{task.title}</p>
-              {task.desc.length > 0 ? <p>details: {task.desc}</p> : null}
-              {/*
-              1. Style the task 
-              2. Create a remove button - need to get id of the task
-              3. Create a reduce that will remove the task from the array of tasks (filter) remove task by id - done
-              4. Show the updated array of tasks
-              */}
-              <button onClick={() => dispatch(removeTask)}>Remove</button>
+              {task.desc && task.desc.length > 0 && <p>details: {task.desc}</p>}
+              <button onClick={() => dispatch(removeTask(task.id))}>
+                Remove Task
+              </button>
+              <EditTask task={task}/>
             </div>
+            // <div key={i}>
+            //   <p>{task.title}</p>
+            //   { task.desc ? task.desc.length > 0 ? <p>details: {task.desc}</p> : null : null
+            //   <button onClick={() => dispatch(removeTask(task.id))}>Remove</button>
+            //   </div>
+
+            //   task.desc && (
+            //     task.desc.length > 0 ? <p>details: {task.desc}</p> : null}
           ))}
+          {/*
+            1. Style the task 
+            2. Create a remove button - need to get id of the task
+            3. Create a reduce that will remove the task from the array of tasks (filter) remove task by id - done
+            4. Show the updated array of tasks
+            */}
           {/* <button className="removeText" onClick={(state, ) => {
                   dispatch(removeText())
               }}>Remove Text</button> */}
