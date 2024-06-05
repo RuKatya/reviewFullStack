@@ -46,8 +46,8 @@ const EditTask: FC<IEditTask> = ({ task }) => {
       {editWindow && (
         <>
           <form onSubmit={hendleEditTask}> 
-            <input type="text" name="title" value={task.title} onChange={handleChangeInput}/>
-            <input type="text" name="desc" value={task.desc} onChange={handleChangeInput}/>
+            <input type="text" name="title" defaultValue={task.title} onChange={handleChangeInput}/>
+            <input type="text" name="desc" defaultValue={task.desc} onChange={handleChangeInput}/>
           <button type="submit">
             Save Updated Task
           </button>

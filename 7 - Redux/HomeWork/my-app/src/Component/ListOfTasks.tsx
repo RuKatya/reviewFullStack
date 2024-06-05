@@ -17,7 +17,7 @@ export interface IUserTask {
 const ListOfTasks = () => {
   const allTasks = useAppSelector(selectTasks)
   const dispatch = useAppDispatch()
-  //console.log(allTasks)
+  console.log(allTasks)
 
 
   const [userTask, setUserTask] = useState<IUserTask>({ title: "", desc: "" })

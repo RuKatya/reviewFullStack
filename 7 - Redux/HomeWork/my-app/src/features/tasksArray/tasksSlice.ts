@@ -34,9 +34,13 @@ export const tasksSlice = createAppSlice({
     },
     editTask: (state, action: PayloadAction) => {
       console.log(action.payload)
-     
-      state.value  = state.value.map(task => {
-        if (task.id === action.payload.id) return (task = action.payload)
+
+      state.value = state.value.map(task => {
+        if (task.id === action.payload.id) {
+          return action.payload
+        } else {
+          return task
+        }
       })
     },
   },
