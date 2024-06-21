@@ -1,0 +1,19 @@
+nav {
+  width: 100%;
+  background-color: blueviolet;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+}
+
+main {
+  width: 80%;
+  margin: 0 auto;
+  background-color: burlywood;
+  height: calc(100vh - 100px);
+}
