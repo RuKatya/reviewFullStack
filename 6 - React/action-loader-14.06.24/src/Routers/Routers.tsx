@@ -5,6 +5,7 @@ import MainPage, { handleLoaderMainPage } from "../View/Pages/MainPage"
 import Contact from "../View/Pages/Contact"
 import Item from "../View/Pages/Item"
 import Error from "./Error"
+import Coments, {handleLoaderComentsPage} from '../View/Pages/Coments'
 
 
 const Routers = () => {
@@ -27,6 +28,11 @@ const Routers = () => {
             {
                 path: "item/:itemId",
                 element: <Item />
+            },
+            {
+                path: "coments-of-post/:postID",
+                element: <Coments />,
+                loader: handleLoaderComentsPage
             }
         ]
         }
