@@ -4,6 +4,13 @@ import './App.css'
 import { Suspense } from 'react'
 
 // add interface
+interface IJoke {
+  iconUrl: string,
+  id: string,
+  url: string,
+  value: string,
+}
+
 //add layout to projeckt (find where)
 
 function App() {
