@@ -14,12 +14,12 @@ interface IJoke {
 //add layout to projeckt (find where)
 
 function App() {
-  const { josks } = useLoaderData() 
+  const { jokes } = useLoaderData() as { jokes: IJoke}
 
   return ( 
     <Suspense fallback={<h1>Loding</h1>}>
-      <Await resolve={josks}>
-      {josks.value}
+      <Await resolve={jokes}>
+      {jokes.value}
       </Await>
     </Suspense>
   )
@@ -41,6 +41,6 @@ const handleGetJoks = async () => {
 
 export const handleLoaderAPI = async () => {
   return defer({
-    josks: await handleGetJoks()
+    jokes: await handleGetJoks()
   })
 }

@@ -69,5 +69,4 @@ export const handleLoaderMainPage = async () => {
   });
 };
 
-//create a new project use the vite latest
 //found new API and fetch it by use loader
