@@ -18,7 +18,7 @@ const Routes = () => {
                     loader: handleLoaderAPI
                 },
                 {
-                    path: "joke-page",
+                    path: "joke-page/:categoryname",
                     element: <JokePage />,
                     loader: handleLoaderJoke
                 },
@@ -27,12 +27,6 @@ const Routes = () => {
                     element: <Categories />,
                     loader: handleLoaderCategories
                 },
-                {
-                    path: "jokes-categories/:categoryname",
-                    element: <Category />,
-                    loader: handleLoaderApiCategory
-                }
-
             ]
         }
     ])

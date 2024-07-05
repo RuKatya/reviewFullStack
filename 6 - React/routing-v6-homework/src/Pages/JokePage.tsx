@@ -2,14 +2,27 @@ import React, { Suspense } from 'react'
 import axios from 'axios'
 import { defer, useLoaderData, Await } from 'react-router-dom'
 
+interface Ijoke {
+  categories: [string],
+  created_at: string,   
+  icon_url: string,
+  id: string,
+  updated_at: string,
+  url: string,
+  value: string
+}
+
 const JokePage = () => {
-  const { joke } = useLoaderData()
+  const { joke } = useLoaderData() as { joke: Ijoke }
   console.log(joke)
 
   return (
     <Suspense fallback={<h2>Loader</h2>}>
       <Await resolve={joke}>
-        <h1>JOKE</h1>
+        <h2>{joke.categories.map((ctg, i) => (
+          <p key={i}>{ctg}</p>
+        ))}</h2>
+        <h3>{joke.value}</h3>
       </Await>
     </Suspense>
   )
@@ -17,12 +30,11 @@ const JokePage = () => {
 
 export default JokePage
 
-const handleGetJoke = async () => {
+const handleGetJoke = async (joke: string) => {
   try {
     const { data } = await axios.get(
-      // `https://api.chucknorris.io/jokes/search?query=${joke}`
-      `https://api.chucknorris.io`
-    )
+      `https://api.chucknorris.io/jokes/random?category=${joke}`
+      )
     return data;
   } catch (error) {
     alert (error)
@@ -30,8 +42,9 @@ const handleGetJoke = async () => {
   }
 }
 
-export const handleLoaderJoke = async () => {
+export const handleLoaderJoke = async ({ params } : any) => {
+  const { categoryname } = params 
   return defer({
-    joke: await handleGetJoke()
+    joke: await handleGetJoke(categoryname)
   })
 }

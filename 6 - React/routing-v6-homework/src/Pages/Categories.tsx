@@ -8,7 +8,7 @@ const Categories = () => {
     <Suspense fallback={<h1>Loding</h1>}>
         <Await resolve={categoriesApi}>
             {categoriesApi.map((ctg, index) => (
-                <Link key={index} to={`/jokes-categories/${ctg}`}>{ctg}</Link>
+                <Link key={index} to={`/joke-page/${ctg}`}>{ctg}</Link>
             ))}
         </Await>
     </Suspense>
