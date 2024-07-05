@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App, { handleLoaderAPI } from '../App'
 import Categories, { handleLoaderCategories } from '../Pages/Categories'
 import Category, { handleLoaderApiCategory } from '../Pages/Category'
-import JokePage from '../Pages/JokePage'
+import JokePage, { handleLoaderJoke } from '../Pages/JokePage'
 import Layout from '../Pages/Layout'
 
 const Routes = () => {
@@ -19,7 +19,8 @@ const Routes = () => {
                 },
                 {
                     path: "joke-page",
-                    element: <JokePage />
+                    element: <JokePage />,
+                    loader: handleLoaderJoke
                 },
                 {
                     path: "categories",
